@@ -1,0 +1,9 @@
+{
+  "runner": "jest-runner-eslint",
+  "displayName": "lint",
+  "target": "node",
+  "testMatch": ["<rootDir>/**/*.ts", "<rootDir>/**/*.js"],
+  "moduleNameMapper": {
+    "^@api(.*)$": "<rootDir>$1"
+  }
+}

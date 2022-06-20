@@ -1,0 +1,75 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build-website:
+    name: Build Website
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./website
+      NODE_ENV: development
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Packages
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: install
+
+      # - name: Run Eslint
+      #   uses: borales/actions-yarn@v3.0.0
+      #   with:
+      #     cmd: start:lint
+
+      # - name: Run Tests
+      #   uses: borales/actions-yarn@v3.0.0
+      #   with:
+      #     cmd: start:test
+
+      # - name: Run Build
+      #   uses: borales/actions-yarn@v3.0.0
+      #   with:
+      #     cmd: start:build
+
+  build-api:
+    name: Build api
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./api
+      NODE_ENV: development
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node_version }}
+        uses: actions/setup-node@v1
+        with:
+          node_version: ${{ matrix.node_version }}
+
+      - uses: actions/checkout@v2
+      - name: Install Packages
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: install
+
+      # - name: Run Eslint
+      #   uses: borales/actions-yarn@v3.0.0
+      #   with:
+      #     cmd: start:lint
+
+      # - name: Run Tests
+      #   uses: borales/actions-yarn@v3.0.0
+      #   with:
+      #     cmd: start:test
+
+      # - name: Run Build
+      #   uses: borales/actions-yarn@v3.0.0
+      #   with:
+      #     cmd: start:build
+          

@@ -1,0 +1,16 @@
+{
+  "name": "constructions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "",
+  "scripts": {
+    "start:dev": "docker-compose -f docker-compose.development.yml --project-name construction-dev up --remove-orphans",
+    "start:dev:down": "docker-compose -f docker-compose.development.yml --project-name construction-dev down --remove-orphans",
+    "start:dev:build": "docker-compose -f ./docker-compose.development.yml --project-name construction-dev build",  
+    "start:prod": "docker-compose -f docker-compose.production.yml --project-name construction-prod up --force-recreate --remove-orphans",
+    "start:prod:down": "docker-compose -f docker-compose.production.yml --project-name construction-prod down --force-recreate --remove-orphans",
+    "start:prod:build": "docker-compose -f ./docker-compose.production.yml --project-name construction-prod build"    
+  }
+}
